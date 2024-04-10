@@ -22,7 +22,8 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given index is less than zero
      */
     public static int atIndex(int i) throws IllegalArgumentException {
-        throw new UnsupportedOperationException("Method not implemented");
+        if (i < 0) throw new IllegalArgumentException("Invalid Input - must be greater than 0");
+        return 0;
     }
 
     /**
@@ -36,7 +37,21 @@ public class Fibonacci {
      *                                  given end is less than the given start
      */
     public static int[] slice(int start, int end) throws IllegalArgumentException {
-        throw new UnsupportedOperationException("Method not implemented");
+        if (start < 0 || end < 0) throw new IllegalArgumentException("Start and end values cannot be negative.");
+        if (start > end) throw new IllegalArgumentException("Start value cannot be greater than end value.");
+
+        int[] slice = new int[(end + 1) - (start)];
+        for (int i = slice[start]; i < end + 1; i++) {
+            if (i == 0 || i == 1) {
+                slice[i] = 1;
+            } else {
+                slice[i] = slice[i - 1] + slice[i - 2];
+            }
+        }
+        return slice;
+
+      //  0 1 2 3 4 5
+      //  1 1 2 3 5 8
     }
 
     /**
@@ -47,6 +62,16 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given count is negative
      */
     public static int[] fibonacci(int count) throws IllegalArgumentException {
-        throw new UnsupportedOperationException("Method not implemented");
+        if (count < 0) throw new IllegalArgumentException("The given count must be positive");
+
+        int[] sequence = new int[count];
+        for (int i = 0; i < sequence.length; i++) {
+            if (i == 0 || i == 1) {
+                sequence[i] = 1;
+            } else {
+                sequence[i] = sequence[i - 1] + sequence[i - 2];
+            }
+        }
+        return sequence;
     }
 }
