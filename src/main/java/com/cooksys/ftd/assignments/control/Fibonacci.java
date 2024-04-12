@@ -23,6 +23,18 @@ public class Fibonacci {
      */
     public static int atIndex(int i) throws IllegalArgumentException {
         if (i < 0) throw new IllegalArgumentException("Invalid Input - must be greater than 0");
+       int atIndex = 0;
+       int[] holdsIndex = new int[i];
+       for (int j = 0; j == i; j++){
+           if (j == i){
+               return 0;
+
+           }
+
+       // length of sequence needs to be at least as long as index value
+
+       }
+
         return 0;
     }
 
@@ -40,13 +52,11 @@ public class Fibonacci {
         if (start < 0 || end < 0) throw new IllegalArgumentException("Start and end values cannot be negative.");
         if (start > end) throw new IllegalArgumentException("Start value cannot be greater than end value.");
 
-        int[] slice = new int[(end + 1) - (start)];
-        for (int i = slice[start]; i < end + 1; i++) {
-            if (i == 0 || i == 1) {
-                slice[i] = 1;
-            } else {
-                slice[i] = slice[i - 1] + slice[i - 2];
-            }
+        int sliceLength = (end + 1) - start;
+        int[] slice = new int[sliceLength];
+        int[] wholeSequence = fibonacci(end + 1);
+        for (int i = start; i < sliceLength; i++) {
+            slice[i] = wholeSequence[i];
         }
         return slice;
 

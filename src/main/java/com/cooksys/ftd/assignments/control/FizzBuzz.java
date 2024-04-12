@@ -24,7 +24,16 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if b is zero
      */
     public static boolean divides(int a, int b) throws IllegalArgumentException {
-        throw new UnsupportedOperationException("Method not implemented");
+        if (b == 0) throw new UnsupportedOperationException("parameter to divide by cannot be 0.");
+        boolean divides;
+
+        if (a % b == 0){
+            divides = true;
+        } else {
+            divides = false;
+        }
+        return divides;
+
     }
 
     /**
@@ -39,7 +48,8 @@ public class FizzBuzz {
      * @return a message according to the format above, or null if n is not divisible by either 3 or 5
      */
     public static String message(int n) {
-        throw new UnsupportedOperationException("Method not implemented");
+        String message = "null";
+        return message;
     }
 
     /**
