@@ -1,5 +1,7 @@
 package com.cooksys.ftd.assignments.control;
 
+import java.util.Objects;
+
 /**
  * FizzBuzz is an old programming exercise.
  * The goal is to iterate over a range of numbers and print a message about each number's divisibility.
@@ -24,7 +26,16 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if b is zero
      */
     public static boolean divides(int a, int b) throws IllegalArgumentException {
-        throw new UnsupportedOperationException("Method not implemented");
+        if (b == 0) throw new IllegalArgumentException("parameter to divide by cannot be 0.");
+        boolean divides;
+
+        if (a % b == 0){
+            divides = true;
+        } else {
+            divides = false;
+        }
+        return divides;
+
     }
 
     /**
@@ -39,7 +50,19 @@ public class FizzBuzz {
      * @return a message according to the format above, or null if n is not divisible by either 3 or 5
      */
     public static String message(int n) {
-        throw new UnsupportedOperationException("Method not implemented");
+        String message;
+        if (n % 3 == 0 && n % 5 == 0) {
+            message = ": FizzBuzz";
+            return n + message;
+        } else if (n % 3 == 0) {
+            message = ": Fizz";
+            return n + message;
+        } else if (n % 5 == 0){
+            message = ": Buzz";
+            return n + message;
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -53,7 +76,30 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the given end is less than the given start
      */
     public static String[] messages(int start, int end) throws IllegalArgumentException {
-        throw new UnsupportedOperationException("Method not implemented");
+        if (end < start) throw new IllegalArgumentException("End value cant be less than start value.");
+//make an array with that has the null elements
+        // create a count of the non null elements
+        // create a filtered array that doesnt have null elements from that count
+
+        int count = 0;
+        String[] messages = new String[end - start];
+
+            for(int i = start; i < end; i++) {
+                String result = message(i);
+                messages[i - start] = result;
+                if (result == null) {
+                    count++;
+                }
+            }
+        String[] noNullMessages = new String[end - start - count];
+            int newIndex = 0;
+
+            for(int j = 0; newIndex < noNullMessages.length && j < messages.length; j++) {
+                if (messages[j] != null) {
+                    noNullMessages[newIndex++] = messages[j];
+                }
+            }
+            return noNullMessages;
     }
 
     /**
