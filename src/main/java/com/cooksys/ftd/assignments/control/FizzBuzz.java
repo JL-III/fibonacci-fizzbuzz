@@ -81,13 +81,25 @@ public class FizzBuzz {
         // create a count of the non null elements
         // create a filtered array that doesnt have null elements from that count
 
-
+        int count = 0;
         String[] messages = new String[end - start];
 
-            for(int i = 0; i == end + 1; i++){
-                messages[i] = message(i);
+            for(int i = start; i < end; i++) {
+                String result = message(i);
+                messages[i - start] = result;
+                if (result == null) {
+                    count++;
+                }
             }
-            return messages;
+        String[] noNullMessages = new String[end - start - count];
+            int newIndex = 0;
+
+            for(int j = 0; newIndex < noNullMessages.length && j < messages.length; j++) {
+                if (messages[j] != null) {
+                    noNullMessages[newIndex++] = messages[j];
+                }
+            }
+            return noNullMessages;
     }
 
     /**
